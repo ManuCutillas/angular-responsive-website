@@ -31,6 +31,10 @@ app.use( bodyParser.urlencoded( { extended: true } ) );
 app.use( bodyParser.json() );
 app.use( cookieParser() );
 app.use( compression() );
+app.set('port', process.env.PORT || env.server.port);
+
+const clientRouting=require('./routes/client');
+app.use(clientRouting);
 
 module.exports = app;
 

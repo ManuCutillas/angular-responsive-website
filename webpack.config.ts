@@ -5,11 +5,11 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpackMerge = require('webpack-merge');
 
 //SOURCE PATHS
-const PROD_CLIENT_DIR = 'dist/client';
+const PROD_CLIENT_DIR = 'dev/client';
 const SRC_CLIENT_DIR = 'src/client';
-const FILES_SRC = `${SRC_CLIENT_DIR}/www`;
-const SRC_SERVER_BIN = 'src/server/bin';
-const PROD_SERVER_BIN = 'dist/server/bin';
+const FILES_SRC = `${SRC_CLIENT_DIR}/assets`;
+const SRC_SERVER_BIN = 'src/server/.bin';
+const PROD_SERVER_BIN = 'dev/server/.bin';
 
 export const commonPlugins = [
   new CopyWebpackPlugin([
@@ -86,7 +86,7 @@ export var clientPlugins = [
 ];
 export var clientConfig = {
   target: 'web',
-  entry: './src/client/main.jit',
+  entry: './src/client/main',
   output: {
     path: root('dist/client')
   },
@@ -111,7 +111,7 @@ export var serverConfig = {
   entry: './src/server', // use the entry file of the node server if everything is ts rather than es5
   output: {
     filename: 'index.js',
-    path: root('dist/server'),
+    path: root('dev/server'),
     libraryTarget: 'commonjs2'
   },
   module: {

@@ -1,9 +1,9 @@
-const webpack = require('webpack');
-const path = require('path');
-const clone = require('js.clone');
-const webpackMerge = require('webpack-merge');
-const V8LazyParseWebpackPlugin = require('v8-lazy-parse-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const webpack = require('webpack')
+const path = require('path')
+const clone = require('js.clone')
+const webpackMerge = require('webpack-merge')
+const V8LazyParseWebpackPlugin = require('v8-lazy-parse-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 import webpackConfig, { root,  includeClientPackages } from './webpack.config';
 // const CompressionPlugin = require('compression-webpack-plugin');
 
@@ -169,9 +169,5 @@ export const serverConfig = {
 };
 
 export default [
-  // Client
-  webpackMerge(webpackConfig[0], clone(commonConfig), clientConfig, {plugins: webpackConfig[0].plugins.concat(commonPlugins, clientPlugins) }),
-
-  // Server
- // webpackMerge(webpackConfig[1], clone(commonConfig), serverConfig, {plugins: webpackConfig[1].plugins.concat(commonPlugins, serverPlugins) })
-];
+  webpackMerge(webpackConfig[0], clone(commonConfig), clientConfig, {plugins: webpackConfig[0].plugins.concat(commonPlugins, clientPlugins) })
+]
