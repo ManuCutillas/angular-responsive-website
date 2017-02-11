@@ -5,7 +5,7 @@ const http = require( 'http' );
 const spdy = require( 'spdy' );  
 const fs = require( 'fs' );
 const port = app.get( 'port' );
-const logger = require( './components/logger' );
+//const logger = require( './components/logger' );
 /*
 const options = 
 {  
@@ -14,7 +14,36 @@ const options =
 };
 */
 
-const server = spdy.createServer( options, app )
+/*const options = {
+  // Private key 
+  //key: fs.readFileSync(__dirname + '/keys/spdy-key.pem'),
+ 
+  // Fullchain file or cert file (prefer the former) 
+  //cert: fs.readFileSync(__dirname + '/keys/spdy-fullchain.pem'),
+ 
+  // **optional** SPDY-specific options 
+  spdy: {
+    protocols: [ 'h2', 'spdy/3.1', 'http/1.1' ],
+    plain: false,
+ 
+    // **optional** 
+    // Parse first incoming X_FORWARDED_FOR frame and put it to the 
+    // headers of every request. 
+    // NOTE: Use with care! This should not be used without some proxy that 
+    // will *always* send X_FORWARDED_FOR 
+    'x-forwarded-for': true,
+ 
+    connection: {
+      windowSize: 1024 * 1024, // Server's window size 
+ 
+      // **optional** if true - server will send 3.1 frames on 3.0 *plain* spdy 
+      autoSpdy31: false
+    }
+  }
+}*/
+
+//const server = spdy.createServer( options, app )
+const server = http.createServer( app )
 server.listen( port );
 server.on( 'error', onError );
 server.on( 'listening', onListening );
@@ -36,11 +65,11 @@ function onError( error )
   switch ( error.code ) 
   {
     case 'EACCES':
-      logger.error( bind + ' requires elevated privileges' );
+      //logger.error( bind + ' requires elevated privileges' );
       process.exit(1);
       break;
     case 'EADDRINUSE':
-      logger.error( bind + ' is already in use' );
+      //logger.error( bind + ' is already in use' );
       process.exit( 1 );
       break;
     default:
@@ -57,5 +86,6 @@ function onListening()
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-    logger.info('init - awesome server');
+    console.log('init - awesome server');
+   // logger.info('init - awesome server');
 };

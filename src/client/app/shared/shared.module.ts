@@ -5,7 +5,7 @@ import { RouterModule }                         from '@angular/router'
 
 import { FooterComponent }                      from './footer/footer.component'
 import { NavbarComponent }                      from './navbar/navbar.component'
-import { NewsService }                      from './news-service/index.ts'
+import { NewsService }                          from './news-service/index'
 
 @NgModule({
   imports: [ CommonModule, RouterModule ],

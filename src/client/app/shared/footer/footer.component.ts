@@ -2,7 +2,7 @@ import { Component }        from '@angular/core';
 
 @Component({
   moduleId: module.id,
-  selector: 'responsive-footer',
+  selector: 'footer-Component',
   templateUrl: 'footer.component.html',
   styleUrls: ['footer.component.css'],
 })

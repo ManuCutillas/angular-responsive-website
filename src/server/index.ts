@@ -16,27 +16,26 @@
  *
  */
 import  *  as  path           from 'path';
-import  *  as  favicon        from 'serve-favicon';
+//import  *  as  favicon        from 'serve-favicon';
 import  *  as  express        from 'express';
 import  *  as  bodyParser     from 'body-parser';
 import  *  as  cookieParser   from 'cookie-parser';
 import  *  as  compression    from 'compression';
 
-const env=require( '../env' );
-
-const app=express();
-app.disable( 'x-powered-by' );
-app.set( 'json spaces', 2 );
-app.use( bodyParser.urlencoded( { extended: true } ) );
+const env=require( '../env' )
+const app=express()
+app.disable( 'x-powered-by' )
+app.set( 'json spaces', 2 )
+app.use( bodyParser.urlencoded( { extended: true } ) )
 app.use( bodyParser.json() );
 app.use( cookieParser() );
 app.use( compression() );
-app.set('port', process.env.PORT || env.server.port);
+app.set('port', process.env.PORT || 3000 )
+app.use(express.static( path.join(__dirname, '../../dev/client') ) )
+const clientRouting=require( './routes/client' )
+app.use( clientRouting )
 
-const clientRouting=require('./routes/client');
-app.use(clientRouting);
-
-module.exports = app;
+module.exports = app
 
 
 

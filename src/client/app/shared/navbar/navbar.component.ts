@@ -5,7 +5,7 @@ import { Component }        from '@angular/core';
  */
 @Component({
   moduleId: module.id,
-  selector: 'responsiveNavbar',
+  selector: 'navbar-component',
   templateUrl: 'navbar.component.html',
   styleUrls: ['navbar.component.css'],
 })

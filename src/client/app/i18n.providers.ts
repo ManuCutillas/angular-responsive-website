@@ -1,4 +1,4 @@
-import { TRANSLATIONS, TRANSLATIONS_FORMAT, LOCALE_ID } from '@angular/core';
+/*import { TRANSLATIONS, TRANSLATIONS_FORMAT, LOCALE_ID } from '@angular/core';
 
 export class TranslationProviders {
 
@@ -22,4 +22,4 @@ export class TranslationProviders {
        xhr.send()
      })
    }
-  }
+  }*/
